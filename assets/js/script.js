@@ -49,10 +49,6 @@ window.onscroll = function() {
  */
 async function handleFormSubmit(event) {
 	await event.preventDefault();
-<<<<<<< HEAD
-	
-=======
->>>>>>> f71e317a8440570c3dde107852c5e782df07f711
 
 	const form = event.currentTarget;
 	const url = form.action;
