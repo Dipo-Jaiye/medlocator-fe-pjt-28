@@ -49,7 +49,10 @@ window.onscroll = function() {
  */
 async function handleFormSubmit(event) {
 	await event.preventDefault();
+<<<<<<< HEAD
 	
+=======
+>>>>>>> f71e317a8440570c3dde107852c5e782df07f711
 
 	const form = event.currentTarget;
 	const url = form.action;
@@ -58,17 +61,19 @@ async function handleFormSubmit(event) {
 		const formData = new FormData(form);
 		const responseData = await postFormDataAsJson({ url, formData });
 
-		if(responseData){
-            alert("Success");
-			if(event.path[0].id == "login"){
-				document.location.assign("dashboard.html");
-			}
-			if(event.path[0].id == "registerForm"){
-				document.location.assign("login.html");
-			}	
+		if((responseData) && (signUpPage)){
+            alert(`Form submitted Successfully! Click Ok to go to the Login Page.
+			You can then log into your Dashboard`);
+			responseData => responseData.text();
+			console.log(responseData);			
+			document.location = "login.html"
+        }
+		if((responseData) && (loginPage)){
+			responseData => responseData.text();
+			console.log(responseData);			
+			document.location = "dashboard.html"
         }
 	} catch (error) {
-		alert("An error occurred. Check console for more details.");
 		console.error(error);
 	}
 }
